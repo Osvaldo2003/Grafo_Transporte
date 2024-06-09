@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Información de Transporte Urbano</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Sistema de Información de Transporte Urbano</h1>
+    </header>
+    <main>
+        <div class="container">
+            <section class="section">
+                <h2>Agregar Estaciones</h2>
+                <div class="form-group">
+                    <input type="text" id="stationName" placeholder="A, B, C, D">
+                    <button id="addStationBtn">Agregar Estación</button>
+                </div>
+                <div id="stationMessage" class="message"></div>
+            </section>
+            <section class="section">
+                <h2>Agregar Ruta</h2>
+                <div class="form-group">
+                    <input type="text" id="station1" placeholder="Estación 1">
+                    <input type="text" id="station2" placeholder="Estación 2">
+                    <input type="number" id="distance" placeholder="Distancia" value="1">
+                    <button id="addRouteBtn">Agregar Ruta</button>
+                </div>
+                <div id="routeMessage" class="message"></div>
+            </section>
+            <section class="section">
+                <h2>Ejecutar BFS</h2>
+                <div class="form-group">
+                    <input type="text" id="startStationBFS" placeholder="Estación">
+                    <button id="bfsBtn">Ejecutar BFS</button>
+                </div>
+                <div id="bfsMessage" class="message"></div>
+                <div id="bfsResults"></div>
+            </section>
+            <section class="section">
+                <h2>Ejecutar Dijkstra</h2>
+                <div class="form-group">
+                    <input type="text" id="startStationDijkstra" placeholder="Estación">
+                    <button id="dijkstraBtn">Ejecutar Dijkstra</button>
+                </div>
+                <div id="dijkstraMessage" class="message"></div>
+                <div id="dijkstraResults"></div>
+            </section>
+        </div>
+    </main>
+    <script type="module" src="./src/controllers/script.mjs"></script>
+</body>
+</html>
