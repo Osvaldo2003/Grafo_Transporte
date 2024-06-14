@@ -29,7 +29,15 @@ document.getElementById('bfsBtn').addEventListener('click', () => {
 document.getElementById('dijkstraBtn').addEventListener('click', () => {
     const startStation = document.getElementById('startStationDijkstra').value.trim();
     const { distances } = graph.dijkstra(startStation);
-    const results = Object.entries(distances).map(([station, distance]) => `${station}: ${distance}`);
+
+
+    const results = Object.entries(distances)
+        .map(([station, distance]) => ({ station, distance }))
+      
+        .sort((a, b) => a.distance - b.distance)
+       
+        .map(({ station, distance }) => `${station}: ${distance}`);
+
     document.getElementById('dijkstraResults').innerText = `Distancias desde ${startStation}:\n${results.join('\n')}`;
     showMessage('dijkstraMessage', 'Algoritmo de Dijkstra completado.', 'success');
 });
