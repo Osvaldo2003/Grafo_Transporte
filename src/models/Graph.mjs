@@ -5,14 +5,18 @@ export default class Graph {
 
     addStation(station) {
         if (!this.adjacencyList.has(station)) {
+            console.log(`Añadiendo estación: ${station}`);
             this.adjacencyList.set(station, []);
         }
     }
 
     addRoute(station1, station2, distance = 1) {
         if (this.adjacencyList.has(station1) && this.adjacencyList.has(station2)) {
+            console.log(`Añadiendo ruta entre ${station1} y ${station2} con distancia ${distance}`);
             this.adjacencyList.get(station1).push({ node: station2, distance });
             this.adjacencyList.get(station2).push({ node: station1, distance });
+        } else {
+            console.log(`No se puede añadir la ruta, una de las estaciones no existe.`);
         }
     }
 
@@ -22,6 +26,7 @@ export default class Graph {
         while (queue.length > 0) {
             const station = queue.shift();
             if (!visited.has(station)) {
+                console.log(`Visitando estación: ${station}`);
                 callback(station);
                 visited.add(station);
                 const neighbors = this.adjacencyList.get(station) || [];
