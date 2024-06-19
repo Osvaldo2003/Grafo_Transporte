@@ -5,7 +5,7 @@ body {
     background-image: url('assets/logo.jpg'); 
     background-size: cover;
     background-position: center;
-    color: #fff; 
+    color: #000000; 
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); 
 }
 
@@ -17,11 +17,6 @@ header {
     padding: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     background-color: rgba(255, 255, 255, 0.8); 
-}
-
-.logo {
-    width: 50px;
-    margin-right: 15px;
 }
 
 h1 {
@@ -80,16 +75,38 @@ button:hover {
     border-radius: 4px;
     display: none;
     font-size: 14px;
+    color: #333; /* Color de texto por defecto */
 }
 
 .message.success {
     background-color: #d4edda;
-    color: #155724;
+    color: #155724; /* Color de texto para mensaje de éxito */
     border: 1px solid #c3e6cb;
 }
 
 .message.error {
     background-color: #f8d7da;
-    color: #721c24;
+    color: #721c24; /* Color de texto para mensaje de error */
     border: 1px solid #f5c6cb;
+}
+
+.message.info {
+    background-color: #d1ecf1;
+    color: #0c5460; /* Color de texto para mensaje de información */
+    border: 1px solid #bee5eb;
+}
+
+.results {
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f9fa;
+    white-space: nowrap;
+    overflow-x: auto;
+}
+
+.results strong {
+    display: block;
+    margin-bottom: 5px;
 }

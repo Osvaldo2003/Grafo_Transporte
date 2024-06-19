@@ -20,23 +20,21 @@ export default class Graph {
         }
     }
 
-    bfs(startStation, callback) {
+    dfs(startStation, callback) {
         const visited = new Set();
-        const queue = [startStation];
-        while (queue.length > 0) {
-            const station = queue.shift();
-            if (!visited.has(station)) {
-                console.log(`Visitando estación: ${station}`);
-                callback(station);
-                visited.add(station);
-                const neighbors = this.adjacencyList.get(station) || [];
-                for (let neighbor of neighbors) {
-                    if (!visited.has(neighbor.node)) {
-                        queue.push(neighbor.node);
-                    }
+
+        const dfsHelper = (station) => {
+            visited.add(station);
+            callback(station);
+            const neighbors = this.adjacencyList.get(station) || [];
+            for (let neighbor of neighbors) {
+                if (!visited.has(neighbor.node)) {
+                    dfsHelper(neighbor.node);
                 }
             }
-        }
+        };
+
+        dfsHelper(startStation);
     }
 
     dijkstra(startStation) {

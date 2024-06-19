@@ -1,5 +1,6 @@
 import Graph from "../models/Graph.mjs";
 
+
 const graph = new Graph();
 
 document.getElementById('addStationBtn').addEventListener('click', () => {
@@ -18,13 +19,16 @@ document.getElementById('addRouteBtn').addEventListener('click', () => {
     showMessage('routeMessage', `Ruta entre ${station1} y ${station2} agregada.`, 'success');
 });
 
-document.getElementById('bfsBtn').addEventListener('click', () => {
-    const startStation = document.getElementById('startStationBFS').value.trim();
+document.getElementById('dfsBtn').addEventListener('click', () => {
+    const startStation = document.getElementById('startStationDFS').value.trim();
     const results = [];
-    graph.bfs(startStation, station => results.push(station));
-    document.getElementById('bfsResults').innerText = `Recorrido BFS desde ${startStation}: ${results.join(' -> ')}`;
-    showMessage('bfsMessage', 'Recorrido BFS completado.', 'success');
+    graph.dfs(startStation, station => {
+        results.push(station);
+    });
+    document.getElementById('dfsResults').innerHTML = `<strong>Recorrido DFS desde ${startStation}:</strong> ${results.join(' -> ')}`;
+    showMessage('dfsMessage', 'Recorrido DFS completado.', 'success');
 });
+
 
 document.getElementById('dijkstraBtn').addEventListener('click', () => {
     const startStation = document.getElementById('startStationDijkstra').value.trim();
@@ -34,7 +38,7 @@ document.getElementById('dijkstraBtn').addEventListener('click', () => {
         .sort((a, b) => a.distance - b.distance) 
         .map(({ station, distance }) => `${station}: ${distance}`);
 
-    document.getElementById('dijkstraResults').innerText = `Distancias desde ${startStation}:\n${results.join('\n')}`;
+    document.getElementById('dijkstraResults').innerHTML = `<strong>Distancias desde ${startStation}:</strong><br>${results.join('<br>')}`;
     showMessage('dijkstraMessage', 'Algoritmo de Dijkstra completado.', 'success');
 });
 
